@@ -13,3 +13,8 @@ def clean_merchant(name: str) -> str:
         name = name.replace(n, "")
 
     return name.strip()
+
+def load_statement(csv_file):
+    df = pd.read_csv(csv_file)
+    df["merchant_clean"] = df["merchant"].apply(clean_merchant)
+    return df
